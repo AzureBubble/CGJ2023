@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI timeText;
-
-    private static UIManager instance;
+    private static GameManager instance;
+    private float gameTime;
 
     private void Awake()
     {
@@ -23,10 +21,9 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public static void UpdateTimeUI(float time)
+    private void Update()
     {
-        int minutes = (int)(time / 60);
-        float seconds = time % 60;
-        instance.timeText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        gameTime += Time.deltaTime;
+        UIManager.UpdateTimeUI(gameTime);
     }
 }
