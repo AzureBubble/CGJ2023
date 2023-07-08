@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     public static void ShowGameOver()
     {
         //TODO:Ω· ¯”Œœ∑
+        Time.timeScale = 0f;
     }
 
     public static void ShowGameWin()
