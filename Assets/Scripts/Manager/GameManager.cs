@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    private float gameTime;
+    private float gameTime = 120f;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        gameTime += Time.deltaTime;
+        gameTime -= Time.deltaTime;
         UIManager.UpdateTimeUI(gameTime);
     }
 }
