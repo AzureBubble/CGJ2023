@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 90f; // 角度变化速度
 
     private bool isMoving = true; // 是否正在移动
-    private bool isMousePressed = false; // 鼠标是否按下
+    private bool isMousePressed1 = false; // 鼠标是否按下
+    private bool isMousePressed2 = false; // 鼠标是否按下
     private float mousePressedTime = 0f; // 鼠标按下的时间
     private float initialAngle = 0f; // 初始角度
 
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             // 按下鼠标时停止移动并记录按下时间和初始角度
             isMoving = true;
-            isMousePressed = true;
+            isMousePressed1 = true;
             mousePressedTime = Time.time;
             initialAngle = transform.rotation.eulerAngles.z;
         }
@@ -33,18 +34,44 @@ public class PlayerController : MonoBehaviour
         {
             // 松开鼠标时根据按下的时间继续移动，并根据时间计算角度增量
             isMoving = true;
-            isMousePressed = false;
+            isMousePressed1 = false;
             float elapsedPressTime = Time.time - mousePressedTime;
             float angleIncrement = rotationSpeed * elapsedPressTime;
             transform.rotation = Quaternion.Euler(0f, 0f, initialAngle + angleIncrement);
         }
 
-        if (isMousePressed)
+        if (Input.GetMouseButtonDown(1))
+        {
+            // 按下鼠标时停止移动并记录按下时间和初始角度
+            isMoving = true;
+            isMousePressed2 = true;
+            mousePressedTime = Time.time;
+            initialAngle = transform.rotation.eulerAngles.z;
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            // 松开鼠标时根据按下的时间继续移动，并根据时间计算角度增量
+            isMoving = true;
+            isMousePressed2 = false;
+            float elapsedPressTime = Time.time - mousePressedTime;
+            float angleIncrement = rotationSpeed * elapsedPressTime;
+            transform.rotation = Quaternion.Euler(0f, 0f, initialAngle - angleIncrement);
+        }
+
+        if (isMousePressed1)
         {
             // 按压鼠标时根据按下的时间计算角度增量
             float elapsedPressTime = Time.time - mousePressedTime;
             float angleIncrement = rotationSpeed * elapsedPressTime;
             transform.rotation = Quaternion.Euler(0f, 0f, initialAngle + angleIncrement);
+        }
+
+        if (isMousePressed2)
+        {
+            // 按压鼠标时根据按下的时间计算角度增量
+            float elapsedPressTime = Time.time - mousePressedTime;
+            float angleIncrement = rotationSpeed * elapsedPressTime;
+            transform.rotation = Quaternion.Euler(0f, 0f, initialAngle - angleIncrement);
         }
     }
 }

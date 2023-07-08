@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    private static GameManager instance;
-    private float gameTime = 120f;
-    public static bool GameOver = false;
+    private static AudioManager instance;
+    public AudioSource BGMSource;
+    public AudioSource FXSource;
 
     private void Awake()
     {
@@ -20,16 +20,5 @@ public class GameManager : MonoBehaviour
         // 保持UIHolder的实例持久性
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void Update()
-    {
-        gameTime -= Time.deltaTime;
-        UIManager.UpdateTimeUI(gameTime);
-
-        if (gameTime <= 0f)
-        {
-            GameOver = true;
-        }
     }
 }

@@ -28,7 +28,13 @@ public class NextLevel : MonoBehaviour
                 unlockLevel = currentLevelIndex;
                 PlayerPrefs.SetInt("unlockedLevelIndex", currentLevelIndex);
             }
-            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+            if ((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings == 0)
+            {
+                UIManager.ShowGameWin();
+                Time.timeScale = 0f;
+            }
+            else
+                SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
         }
     }
 }

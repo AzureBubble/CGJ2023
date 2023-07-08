@@ -28,5 +28,21 @@ public class UIManager : MonoBehaviour
         int minutes = (int)(time / 60);
         int seconds = (int)(time % 60);
         instance.timeText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+
+        if (GameManager.GameOver)
+        {
+            ShowGameOver();
+        }
+    }
+
+    public static void ShowGameOver()
+    {
+        //TODO:Ω· ¯”Œœ∑
+    }
+
+    public static void ShowGameWin()
+    {
+        //TODO:win
+        Debug.Log("win");
     }
 }
