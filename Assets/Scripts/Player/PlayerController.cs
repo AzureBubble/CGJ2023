@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // 按下鼠标时停止移动并记录按下时间和初始角度
-            isMoving = false;
+            isMoving = true;
             isMousePressed = true;
             mousePressedTime = Time.time;
             initialAngle = transform.rotation.eulerAngles.z;

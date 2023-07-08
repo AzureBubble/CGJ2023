@@ -9,10 +9,11 @@ public class FaceCamera : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        childs = new Transform[transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
+        childs = new Transform[GameObject.Find("Back").transform.childCount];
+        //childs = new Transform[transform.childCount];
+        for (int i = 0; i < childs.Length; i++)
         {
-            childs[i] = transform.GetChild(i);
+            childs[i] = GameObject.Find("Back").transform.GetChild(i);
         }
     }
 
