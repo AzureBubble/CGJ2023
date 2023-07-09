@@ -156,7 +156,6 @@ public class PlayerController : MonoBehaviour
         // 等待指定的时间
         yield return new WaitForSeconds(3);
 
-        // 加载下一个场景
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        UIManager.instance.ShowGameOver();
     }
 }

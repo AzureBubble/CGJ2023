@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        gameTime = 120f;
         // 检查是否已经存在UIHolder的实例，如果有则销毁当前对象
         if (instance != null)
         {

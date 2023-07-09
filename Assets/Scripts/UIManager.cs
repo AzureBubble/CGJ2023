@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
 
     public GameObject menuPanel;
+    public GameObject losePanel;
+    public GameObject GamePanel;
+    public Button nextBtn;
 
     public static UIManager instance;
 
@@ -33,20 +38,43 @@ public class UIManager : MonoBehaviour
 
         if (GameManager.GameOver)
         {
-            ShowGameOver();
+            UIManager.instance.ShowGameOver();
         }
     }
 
-    public static void ShowGameOver()
+    public void ShowGameOver()
     {
         //TODO:½áÊøÓÎÏ·
+        losePanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public void ShowGameWin()
+    public void ShowGameWin(int index)
     {
         //TODO:win
         //Debug.Log("win");
         menuPanel.SetActive(true);
+        nextBtn.onClick.AddListener(() => Next(index));
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        losePanel.SetActive(false);
+        menuPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void Next(int index)
+    {
+        SceneManager.LoadScene(index);
+        Time.timeScale = 1f;
+        menuPanel.SetActive(false);
+        losePanel.SetActive(false);
+    }
+
+    public void ShowGameWinMenu()
+    {
+        GamePanel.SetActive(true);
     }
 }

@@ -12,7 +12,7 @@ public class LevelPanelManager : MonoBehaviour
 
     private void Start()
     {
-        //PlayerPrefs.SetInt("unlockedLevelIndex", 0);
+        PlayerPrefs.SetInt("unlockedLevelIndex", 0);
         unlockedLevelIndex = PlayerPrefs.GetInt("unlockedLevelIndex");
         levelButton = new Button[levelPanel.transform.childCount];
         for (int i = 0; i < levelPanel.transform.childCount; i++)

@@ -31,7 +31,7 @@ public class NextLevel : MonoBehaviour
             }
             if ((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings == 0)
             {
-                UIManager.instance.ShowGameWin();
+                UIManager.instance.ShowGameWinMenu();
                 Time.timeScale = 0f;
             }
             else
@@ -47,7 +47,7 @@ public class NextLevel : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         // 加载下一个场景
-        UIManager.instance.ShowGameWin();
+        UIManager.instance.ShowGameWin(index);
         Time.timeScale = 0f;
     }
 }
