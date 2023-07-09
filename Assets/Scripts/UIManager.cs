@@ -7,7 +7,9 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
 
-    private static UIManager instance;
+    public GameObject menuPanel;
+
+    public static UIManager instance;
 
     private void Awake()
     {
@@ -41,9 +43,10 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public static void ShowGameWin()
+    public void ShowGameWin()
     {
         //TODO:win
-        Debug.Log("win");
+        //Debug.Log("win");
+        menuPanel.SetActive(true);
     }
 }

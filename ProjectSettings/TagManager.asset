@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Handrail
+  - Otter
+  - Hamer
   layers:
   - Default
   - TransparentFX

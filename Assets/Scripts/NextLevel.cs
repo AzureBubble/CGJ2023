@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour
 {
     public int currentLevelIndex;
+    public float waitTime = 3f;
 
     private int unlockLevel;
 
@@ -30,11 +31,23 @@ public class NextLevel : MonoBehaviour
             }
             if ((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings == 0)
             {
-                UIManager.ShowGameWin();
+                UIManager.instance.ShowGameWin();
                 Time.timeScale = 0f;
             }
             else
-                SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+            {
+                StartCoroutine(LoadNextSceneAfterDelay((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings));
+            }
         }
+    }
+
+    private IEnumerator LoadNextSceneAfterDelay(int index)
+    {
+        // 等待指定的时间
+        yield return new WaitForSeconds(waitTime);
+
+        // 加载下一个场景
+        UIManager.instance.ShowGameWin();
+        Time.timeScale = 0f;
     }
 }
