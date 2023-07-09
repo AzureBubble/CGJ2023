@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             spriteRenderer.sprite = originSprite;
+            return;
         }
         else if (!isHamer && (collision.gameObject.CompareTag("Handrail") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("snake")))
         {
